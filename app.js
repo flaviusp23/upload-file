@@ -11,9 +11,16 @@ const connectDB = require('./db/connect');
 const notFoundMiddleware = require('./middleware/not-found');
 const errorHandlerMiddleware = require('./middleware/error-handler');
 
+//product router
+const productRouter = require('./routes/productRoutes');
+
+app.use(express.json())
+
 app.get('/', (req, res) => {
   res.send('<h1>File Upload Starter</h1>');
 });
+
+app.use('/api/v1/products',productRouter)
 
 // middleware
 app.use(notFoundMiddleware);
